@@ -208,6 +208,8 @@ const BUILDINGS = [
     alias: "1학·1학생회관",
     x: 30,
     y: 62,
+    lat: 36.367861,
+    lng: 127.343056,
     zone: "student",
     rooms: ["학생식당(1학)", "매점", "편의시설"],
   },
@@ -388,6 +390,8 @@ const BUILDINGS = [
     alias: "2학·인재개발원",
     x: 56,
     y: 66,
+    lat: 36.365978,
+    lng: 127.345767,
     zone: "student",
     rooms: ["학생식당(2학)", "인재개발원(취업)", "헌혈의 집", "매점"],
   },
@@ -564,6 +568,19 @@ const BUILDINGS = [
     zone: "art",
     rooms: ["전시실", "수장고"],
   },
+
+  // ── 수집 목적지 (운동장 등, 좌표 직접 지정) ──────────
+  // lat/lng가 있으면 카카오 검색을 건너뛰고 이 좌표로 바로 핀을 찍는다.
+  { code: "SP-S",  name: "남부운동장",      alias: "남부운동장",                         lat: 36.364567, lng: 127.344524, zone: "etc", rooms: [] },
+  { code: "SP-C",  name: "종합운동장",      alias: "종합운동장·대운동장",                lat: 36.373206, lng: 127.342570, zone: "etc", rooms: [] },
+  { code: "SP-N",  name: "북부운동장",      alias: "북부운동장",                         lat: 36.375027, lng: 127.342364, zone: "etc", rooms: [] },
+  { code: "SP-FT", name: "풋살장·테니스장", alias: "풋살장·테니스장·테니스코트",         lat: 36.374591, lng: 127.343387, zone: "etc", rooms: [] },
+  { code: "SP-R",  name: "학군단운동장",    alias: "학군단운동장·학군단",                lat: 36.372038, lng: 127.347510, zone: "etc", rooms: [] },
+  { code: "SP-A",  name: "농대운동장",      alias: "농대운동장·농업생명과학대학 운동장", lat: 36.368315, lng: 127.351059, zone: "etc", rooms: [] },
+
+  // ── 수집 목적지 (건물·시설) ──────────
+  { code: "HRD",  name: "인재개발원",   alias: "인재개발원·인재개발원본부",  lat: 36.365978, lng: 127.345767, zone: "admin",   rooms: [] },
+  { code: "W8-3", name: "제3학생회관",  alias: "3학·제3학생회관",           lat: 36.371434, lng: 127.344688, zone: "student", rooms: [] },
 ];
 
 // ── 출발 지점 후보 ─────────────────────────────────────────
@@ -838,8 +855,12 @@ function KakaoSearchMap({ origin, building }) {
             : await searchWithFallback([originQueryOf(origin)])
           : null;
 
+        // 목적지에 좌표(lat/lng)가 있으면 카카오 검색을 건너뛰고 그 좌표로 바로 핀을 찍는다.
+        // (기존 건물들은 lat/lng이 없으므로 그대로 카카오 검색으로 동작한다.)
         const destPlace = building
-          ? await searchWithFallback(buildingQueriesOf(building))
+          ? building.lat != null && building.lng != null
+            ? { lat: building.lat, lng: building.lng, placeName: building.name, query: building.name }
+            : await searchWithFallback(buildingQueriesOf(building))
           : null;
 
         if (cancelled) return;
