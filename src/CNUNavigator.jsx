@@ -5,6 +5,46 @@ import { routeOnCampusGraph } from "./campusGraph";
 // 그래프 데이터(src/campusGraph.js)를 다 채운 뒤 false로 끌 것.
 const COLLECT_MODE = false;
 
+// ── Gemini 대화 호출 (서버 함수 /api/chat 경유) ──────────────
+// 기존 규칙/점수 검색이 못 알아들은 문장만 Gemini에게 넘겨 자연스러운 답을 받는다.
+// 실제 건물/호실/좌표/경로는 여전히 기존 두리번 데이터가 담당한다.
+async function askGemini(userText) {
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message:
+          "너는 충남대학교 대덕캠퍼스 길안내 챗봇 '두리번'이야. " +
+          "친근하고 간결하게 한국어로 답해줘. 캠퍼스에 없는 건물이나 정확하지 않은 위치는 지어내지 마. " +
+          "사용자 메시지: " + userText,
+      }),
+    });
+    const data = await res.json();
+    return data.reply || null;
+  } catch {
+    return null;
+  }
+}
+
+// ── Gemini 의도 분석 호출 (JSON parse 모드) ──────────────────
+// 서버(/api/chat, mode:"parse")가 문장에서 출발지·목적지·의도를 뽑아 JSON으로 돌려준다.
+// 반환 예: { intent, origin, destination, ready_to_navigate, reply }
+// 실제 장소 검증/좌표/경로는 이 JSON을 받아 기존 두리번 DB가 담당한다.
+async function askGeminiParse(userText) {
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userText, mode: "parse" }),
+    });
+    const data = await res.json();
+    return data.parsed || null;
+  } catch {
+    return null;
+  }
+}
+
 // ════════════════════════════════════════════════════════════
 // 충남대학교 대덕캠퍼스 두리번 (CNU Campus Navigator)
 // 지도 기반 1차 버전
@@ -1142,11 +1182,60 @@ export default function CNUNavigator() {
         return;
       }
 
-      pushBot({
-        role: "bot",
-        type: "text",
-        content:
-          '음... 못 찾았어요 😅 건물명·학과·호실·교수님 성함으로 다시 말해주실래요?\n예: "공대4호관 메카트로닉스 학생회실", "523호", "정슬 교수님", "경상대"',
+      // 기존 규칙 검색이 못 잡음 → Gemini 의도 분석(parse)으로 넘김
+      // Gemini는 출발지/목적지를 "이해"만 하고, 실제 장소 검증은 아래에서
+      // 기존 두리번 DB(ORIGINS / bestMatch)가 담당한다.
+      setTyping(true);
+      askGeminiParse(t).then((parsed) => {
+        // Gemini가 뽑은 출발지/목적지를 기존 두리번 DB로 검증
+        const gOrigin = parsed && parsed.origin ? findOriginInText(parsed.origin) : null;
+        const gMatch = parsed && parsed.destination ? bestMatch(parsed.destination) : null;
+
+        // A) 목적지를 두리번 DB에서 확인한 경우 → 실제 길찾기로 연결
+        if (gMatch) {
+          const b = gMatch.building;
+          const o = gOrigin || origin;
+          if (gOrigin) setOrigin(gOrigin);
+
+          if (o) {
+            runRoute(o, b, null, gMatch.room); // 기존 길찾기 함수 그대로 호출
+          } else {
+            // 목적지는 있는데 출발지가 없음 → 출발지 선택 요청
+            setPending({ building: b, tip: null, room: gMatch.room });
+            const destLabel = gMatch.room
+              ? `**${b.name}**(${b.code}) ${gMatch.room}`
+              : `**${b.name}**(${b.code})`;
+            pushBot([
+              { role: "bot", type: "text", content: `${destLabel}(으)로 안내할게요! 지금 어디 계세요?` },
+              { role: "bot", type: "choices", items: ORIGINS, kind: "origin" },
+            ]);
+          }
+          return;
+        }
+
+        // B) 목적지는 못 찾고 출발지만 인식된 경우
+        if (gOrigin) {
+          setOrigin(gOrigin);
+          pushBot({
+            role: "bot",
+            type: "text",
+            content: `**${gOrigin.label}**에서 출발이군요! 어디로 가시나요? (예: 공대4호관 학생회실, 인문대, 523호)`,
+          });
+          return;
+        }
+
+        // C) 두리번 DB에서 장소를 못 찾음 → Gemini의 안내 문장으로 대화 응답
+        setTyping(false);
+        setMessages((p) => [
+          ...p,
+          {
+            role: "bot",
+            type: "text",
+            content:
+              (parsed && parsed.reply) ||
+              '음... 그 장소는 제가 아직 못 찾겠어요 😅 건물명·학과·호실·교수님 성함으로 다시 말해주실래요?\n예: "공대4호관 메카트로닉스 학생회실", "523호", "정슬 교수님"',
+          },
+        ]);
       });
       return;
     }
