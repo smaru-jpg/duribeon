@@ -58,10 +58,6 @@ export default defineConfig(({ mode }) => {
       VitePWA({
         registerType: "autoUpdate",
 
-        includeAssets: [
-          "favicon.ico"
-        ],
-
         manifest: {
           name: "두리번",
           short_name: "두리번",
