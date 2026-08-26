@@ -20,6 +20,7 @@ async function askGemini(userText) {
           "사용자 메시지: " + userText,
       }),
     });
+    if (!res.ok) return null;
     const data = await res.json();
     return data.reply || null;
   } catch {
@@ -38,6 +39,7 @@ async function askGeminiParse(userText) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userText, mode: "parse" }),
     });
+    if (!res.ok) return null;
     const data = await res.json();
     return data.parsed || null;
   } catch {
@@ -1033,7 +1035,7 @@ function KakaoSearchMap({ origin, building }) {
 
   if (!KAKAO_MAP_KEY) {
     return (
-      <div style={S.mapNotice}>
+      <div className="cnu-map-notice" style={S.mapNotice}>
         Kakao Map API 키가 필요합니다.
         <br />
         프로젝트 루트에 <b>.env</b> 파일을 만들고
@@ -1072,6 +1074,10 @@ function findOriginInText(t) {
   if (s.includes("도서관")) return ORIGINS.find((o) => o.id === "library");
   if (s.includes("1학") || s.includes("일학") || s.includes("학생회관"))
     return ORIGINS.find((o) => o.id === "student1");
+
+  // 출입구로 등록되지 않은 건물도 출발지로 사용할 수 있게 한다.
+  const match = bestMatch(t);
+  if (match) return { ...match.building, label: match.building.name };
   return null;
 }
 
@@ -1207,7 +1213,23 @@ export default function CNUNavigator() {
       // Gemini는 출발지/목적지를 "이해"만 하고, 실제 장소 검증은 아래에서
       // 기존 두리번 DB(ORIGINS / bestMatch)가 담당한다.
       setTyping(true);
-      askGeminiParse(t).then((parsed) => {
+      askGeminiParse(t).then(async (parsed) => {
+        if (!parsed) {
+          const reply = await askGemini(t);
+          setTyping(false);
+          setMessages((p) => [
+            ...p,
+            {
+              role: "bot",
+              type: "text",
+              content:
+                reply ||
+                '음... 지금 AI 응답을 받지 못했어요. 잠시 후 다시 시도해주세요.',
+            },
+          ]);
+          return;
+        }
+
         // Gemini가 뽑은 출발지/목적지를 기존 두리번 DB로 검증
         const gOrigin = parsed && parsed.origin ? findOriginInText(parsed.origin) : null;
         const gMatch = parsed && parsed.destination ? bestMatch(parsed.destination) : null;
@@ -1310,7 +1332,7 @@ export default function CNUNavigator() {
   };
 
   return (
-    <div style={S.wrap}>
+    <div className="cnu-app" style={S.wrap}>
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
 .pop{animation:pp .34s cubic-bezier(.18,.89,.32,1.28)}
@@ -1322,6 +1344,23 @@ export default function CNUNavigator() {
 .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#bbb;margin:0 2px;animation:bl 1.2s infinite}
 .dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
 @keyframes bl{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+@media (max-width:768px){
+  .cnu-app{height:100dvh!important;max-width:none!important;border-radius:0!important}
+  .cnu-chat{padding:14px 12px!important}
+  .cnu-quick{padding:8px 12px 0!important;flex-wrap:wrap!important;overflow:visible!important}
+  .cnu-map-frame,.cnu-map-frame>div{height:280px!important}
+  .cnu-map-notice{height:280px!important}
+  .cnu-map-bubble{max-width:100%!important}
+  .cnu-input-bar{padding:10px 12px calc(12px + env(safe-area-inset-bottom))!important}
+}
+@media (max-width:480px){
+  .cnu-chat{gap:8px!important}
+  .cnu-input-bar{gap:6px!important}
+  .cnu-quick{gap:6px!important}
+  .cnu-quick button{padding:7px 10px!important}
+  .cnu-map-frame,.cnu-map-frame>div{height:240px!important}
+  .cnu-map-notice{height:240px!important}
+}
 `}</style>
 
       <header style={S.header}>
@@ -1333,7 +1372,7 @@ export default function CNUNavigator() {
         <div style={S.live}>● CNU</div>
       </header>
 
-      <div ref={scrollRef} className="cnu-in" style={S.chat}>
+      <div ref={scrollRef} className="cnu-in cnu-chat" style={S.chat}>
         {messages.map((m, i) => (
           <Bubble key={i} m={m} onChoice={onChoice} />
         ))}
@@ -1348,7 +1387,7 @@ export default function CNUNavigator() {
         )}
       </div>
 
-      <div style={S.quick}>
+      <div className="cnu-quick" style={S.quick}>
         {["인문대 가는 길", "공대1호관 어디", "중앙도서관", "행정학부", "경상대"].map((q) => (
           <button key={q} className="chip" style={S.qchip} onClick={() => handle(q)}>
             {q}
@@ -1356,7 +1395,7 @@ export default function CNUNavigator() {
         ))}
       </div>
 
-      <div style={S.inputBar}>
+      <div className="cnu-input-bar" style={S.inputBar}>
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -1381,9 +1420,9 @@ function Bubble({ m, onChoice }) {
   if (m.type === "map") {
     return (
       <div className="pop" style={{ ...S.line, justifyContent: "flex-start" }}>
-        <div style={{ ...S.bot, padding: 10, width: "100%", maxWidth: 430 }}>
+        <div className="cnu-map-bubble" style={{ ...S.bot, padding: 10, width: "100%", maxWidth: 430 }}>
           <div style={S.lbl}>🗺️ Kakao Map — 위치 확인</div>
-          <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e3ddd0" }}>
+          <div className="cnu-map-frame" style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e3ddd0" }}>
             <KakaoSearchMap origin={m.origin} building={m.building} />
           </div>
         </div>
@@ -1447,9 +1486,11 @@ function md(t) {
 const S = {
   wrap: {
     fontFamily: "'Gowun Dodum',sans-serif",
+    width: "100%",
     maxWidth: 520,
     margin: "0 auto",
-    height: 760,
+    height: "min(760px, calc(100dvh - 40px))",
+    minHeight: 0,
     display: "flex",
     flexDirection: "column",
     background: "#fffdf8",
@@ -1498,7 +1539,7 @@ const S = {
     lineHeight: 1.55,
     color: "#39332a",
     boxShadow: "0 2px 8px rgba(70,60,30,.05)",
-    maxWidth: 360,
+    maxWidth: "min(360px, 86%)",
   },
   user: {
     background: "linear-gradient(120deg,#1f5fa8,#3a7bc8)",
@@ -1507,7 +1548,7 @@ const S = {
     borderRadius: "16px 4px 16px 16px",
     fontSize: 14.5,
     lineHeight: 1.5,
-    maxWidth: 300,
+    maxWidth: "min(300px, 86%)",
     boxShadow: "0 2px 8px rgba(30,60,120,.18)",
   },
   lbl: {
@@ -1540,8 +1581,8 @@ const S = {
     display: "flex",
     gap: 7,
     padding: "10px 14px 0",
-    flexWrap: "nowrap",
-    overflowX: "auto",
+    flexWrap: "wrap",
+    overflow: "visible",
   },
   qchip: {
     border: "1px solid #d8e0d8",
@@ -1566,11 +1607,12 @@ const S = {
   },
   textInput: {
     flex: 1,
+    minWidth: 0,
     boxSizing: "border-box",
     padding: "12px 15px",
     borderRadius: 22,
     border: "1.5px solid #d8e0d8",
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: "'Gowun Dodum',sans-serif",
     outline: "none",
     background: "#fbfdfb",

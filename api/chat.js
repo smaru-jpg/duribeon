@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "GEMINI_API_KEY 환경변수가 없습니다" });
   }
 
-  const MODEL = "gemini-3.6-flash"; // 최신 무료 모델로 교체 가능
+  const MODEL = "gemini-3.6-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
   try {

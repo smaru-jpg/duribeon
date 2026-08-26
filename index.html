@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>두리번 · 충남대 길안내 챗봇</title>
     <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         background: #eef0ee;
-        min-height: 100vh;
+        min-height: 100dvh;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 0;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      #root {
+        width: 100%;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 0;
+          align-items: stretch;
+        }
       }
     </style>
   </head>
