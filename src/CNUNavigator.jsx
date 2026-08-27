@@ -1300,6 +1300,17 @@ export default function CNUNavigator() {
     runRoute(o, b, tip, match.room);
   };
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from");
+    const to = params.get("to");
+
+    if (!from || !to) return;
+
+    handle(`${from}에서 ${to} 가는 길 알려줘`);
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }, []);
+
   const onChoice = (item, kind) => {
     if (kind === "origin") {
       pushUser(`현재 위치: ${item.label}`);
