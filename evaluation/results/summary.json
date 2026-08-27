@@ -1,0 +1,230 @@
+{
+  "meta": {
+    "generated_at": "2026-08-27T11:38:00.763Z",
+    "caseCount": 80,
+    "runs": 1,
+    "mode": "production(default temperature)",
+    "gemini_evaluated": true,
+    "legacy_evaluated": true,
+    "model": "gemini-3.6-flash",
+    "note": "수치는 실제 실행 결과이며 80개 테스트 명령 기준으로 해석해야 함. 임의 보정·과장 없음."
+  },
+  "overall": {
+    "legacy": {
+      "origin": {
+        "n": 80,
+        "ok": 20,
+        "acc": 25
+      },
+      "destination": {
+        "n": 80,
+        "ok": 70,
+        "acc": 87.5
+      },
+      "pair": {
+        "n": 80,
+        "ok": 18,
+        "acc": 22.5
+      },
+      "clarification_rate": 68.8
+    },
+    "llm": {
+      "origin": {
+        "n": 21,
+        "ok": 21,
+        "acc": 100
+      },
+      "destination": {
+        "n": 21,
+        "ok": 21,
+        "acc": 100
+      },
+      "pair": {
+        "n": 21,
+        "ok": 21,
+        "acc": 100
+      },
+      "clarification_rate": 0
+    }
+  },
+  "byCategory": {
+    "legacy": {
+      "formal": {
+        "origin": {
+          "n": 20,
+          "ok": 11,
+          "acc": 55
+        },
+        "destination": {
+          "n": 20,
+          "ok": 20,
+          "acc": 100
+        },
+        "pair": {
+          "n": 20,
+          "ok": 11,
+          "acc": 55
+        }
+      },
+      "abbreviation": {
+        "origin": {
+          "n": 20,
+          "ok": 4,
+          "acc": 20
+        },
+        "destination": {
+          "n": 20,
+          "ok": 19,
+          "acc": 95
+        },
+        "pair": {
+          "n": 20,
+          "ok": 4,
+          "acc": 20
+        }
+      },
+      "variant": {
+        "origin": {
+          "n": 20,
+          "ok": 3,
+          "acc": 15
+        },
+        "destination": {
+          "n": 20,
+          "ok": 18,
+          "acc": 90
+        },
+        "pair": {
+          "n": 20,
+          "ok": 2,
+          "acc": 10
+        }
+      },
+      "natural": {
+        "origin": {
+          "n": 20,
+          "ok": 2,
+          "acc": 10
+        },
+        "destination": {
+          "n": 20,
+          "ok": 13,
+          "acc": 65
+        },
+        "pair": {
+          "n": 20,
+          "ok": 1,
+          "acc": 5
+        }
+      }
+    },
+    "llm": {
+      "formal": {
+        "origin": {
+          "n": 12,
+          "ok": 12,
+          "acc": 100
+        },
+        "destination": {
+          "n": 12,
+          "ok": 12,
+          "acc": 100
+        },
+        "pair": {
+          "n": 12,
+          "ok": 12,
+          "acc": 100
+        }
+      },
+      "abbreviation": {
+        "origin": {
+          "n": 9,
+          "ok": 9,
+          "acc": 100
+        },
+        "destination": {
+          "n": 9,
+          "ok": 9,
+          "acc": 100
+        },
+        "pair": {
+          "n": 9,
+          "ok": 9,
+          "acc": 100
+        }
+      },
+      "variant": {
+        "origin": {
+          "n": 0,
+          "ok": 0,
+          "acc": 0
+        },
+        "destination": {
+          "n": 0,
+          "ok": 0,
+          "acc": 0
+        },
+        "pair": {
+          "n": 0,
+          "ok": 0,
+          "acc": 0
+        }
+      },
+      "natural": {
+        "origin": {
+          "n": 0,
+          "ok": 0,
+          "acc": 0
+        },
+        "destination": {
+          "n": 0,
+          "ok": 0,
+          "acc": 0
+        },
+        "pair": {
+          "n": 0,
+          "ok": 0,
+          "acc": 0
+        }
+      }
+    }
+  },
+  "improvements": {
+    "origin": {
+      "legacy": 25,
+      "llm": 100,
+      "diff_pp": 75,
+      "relative_pct": 300,
+      "error_reduction_pct": 100
+    },
+    "destination": {
+      "legacy": 87.5,
+      "llm": 100,
+      "diff_pp": 12.5,
+      "relative_pct": 14.3,
+      "error_reduction_pct": 100
+    },
+    "pair": {
+      "legacy": 22.5,
+      "llm": 100,
+      "diff_pp": 77.5,
+      "relative_pct": 344.4,
+      "error_reduction_pct": 100
+    }
+  },
+  "response_time": {
+    "count": 21,
+    "avg": 4459,
+    "min": 1751,
+    "max": 13051,
+    "median": 2909,
+    "p95": 10395
+  },
+  "infra_errors": {
+    "api": 59,
+    "timeout": 0,
+    "parse": 0
+  },
+  "variance": null,
+  "report_ko": "※ 아래 수치는 두리번 80개 테스트 명령을 동일 조건으로 평가한 실제 실행 결과입니다.\n쌍(출발지+목적지 동시 정답) 정확도는 기존 규칙·키워드 방식 22.5%에서 Gemini 의미 해석 방식 100%로 +77.5%p 변화했습니다 (오류 100% 감소).\n세부적으로 출발지 정확도는 25%→100% (+75%p), 목적지 정확도는 87.5%→100% (+12.5%p)로 나타났습니다.\n불필요한 출발지 재질문 비율은 기존 68.8%에서 Gemini 0%로 집계되었습니다.\nGemini 평균 응답시간은 4459ms (중앙값 2909ms, 최소 1751ms, 최대 13051ms, p95 10395ms)였습니다.\n참고: API 오류 59건, 타임아웃 0건은 인식 정확도 분모에서 제외했습니다."
+}

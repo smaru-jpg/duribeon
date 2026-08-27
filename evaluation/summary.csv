@@ -1,0 +1,81 @@
+run,id,category,alias_type,input,expected_origin,expected_destination,legacy_origin,legacy_destination,legacy_origin_correct,legacy_destination_correct,legacy_pair_correct,legacy_asked_origin,legacy_status
+1,1,formal,formal,정문에서 인문대학 가는 길 알려줘,정문,인문대학,정문,인문대학,true,true,true,false,SUCCESS
+1,2,formal,formal,서문에서 자연과학대학 1호관 가줘,서문,자연과학대학 1호관,서문,자연과학대학 1호관,true,true,true,false,SUCCESS
+1,3,formal,formal,쪽문에서 공과대학 4호관 가는 길,쪽문,공과대학 4호관,쪽문,공과대학 4호관,true,true,true,false,SUCCESS
+1,4,formal,formal,북문에서 수의과대학 가줘,북문,수의과대학,북문(자운대방면),수의과대학,true,true,true,false,SUCCESS
+1,5,formal,formal,중앙도서관 앞에서 경상대학 가는 길 알려줘,중앙도서관,경상대학,중앙도서관 앞,경상대학,true,true,true,false,SUCCESS
+1,6,formal,formal,정문에서 법학전문대학원 가줘,정문,법학전문대학원,정문,법학전문대학원,true,true,true,false,SUCCESS
+1,7,formal,formal,공과대학 1호관에서 제1학생회관 가줘,공과대학 1호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,8,formal,formal,인문대학에서 경상대학 가는 길,인문대학,경상대학,,경상대학,false,true,false,true,SUCCESS
+1,9,formal,formal,자연과학대학 1호관에서 중앙도서관 가줘,자연과학대학 1호관,중앙도서관,,중앙도서관,false,true,false,true,SUCCESS
+1,10,formal,formal,공과대학 4호관에서 제1학생회관 가는 길 알려줘,공과대학 4호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,11,formal,formal,약학대학에서 생활과학대학 가줘,약학대학,생활과학대학,,생활과학대학,false,true,false,true,SUCCESS
+1,12,formal,formal,생명시스템과학대학에서 자연과학대학 1호관 가는 길,생명시스템과학대학,자연과학대학 1호관,,자연과학대학 1호관,false,true,false,true,SUCCESS
+1,13,formal,formal,서문에서 농업생명과학대학 1호관 가줘,서문,농업생명과학대학 1호관,서문,농업생명과학대학 1호관,true,true,true,false,SUCCESS
+1,14,formal,formal,공과대학 4호관에서 중앙도서관 가줘,공과대학 4호관,중앙도서관,,중앙도서관,false,true,false,true,SUCCESS
+1,15,formal,formal,정문에서 공과대학 1호관 가는 길 알려줘,정문,공과대학 1호관,정문,공과대학 1호관,true,true,true,false,SUCCESS
+1,16,formal,formal,제1학생회관에서 인문대학 가줘,제1학생회관,인문대학,제1학생회관 앞,인문대학,true,true,true,false,SUCCESS
+1,17,formal,formal,경상대학에서 약학대학 가는 길,경상대학,약학대학,,약학대학,false,true,false,true,SUCCESS
+1,18,formal,formal,북문에서 생명시스템과학대학 가줘,북문,생명시스템과학대학,북문(자운대방면),생명시스템과학대학,true,true,true,false,SUCCESS
+1,19,formal,formal,자연과학대학 1호관에서 공과대학 4호관 가는 길 알려줘,자연과학대학 1호관,공과대학 4호관,,공과대학 4호관,false,true,false,true,SUCCESS
+1,20,formal,formal,중앙도서관 앞에서 제1학생회관 가줘,중앙도서관,제1학생회관,중앙도서관 앞,제1학생회관,true,true,true,false,SUCCESS
+1,21,abbreviation,known,공4에서 자1 가줘,공과대학 4호관,자연과학대학 1호관,,자연과학대학 1호관,false,true,false,true,SUCCESS
+1,22,abbreviation,known,공1에서 1학 가자,공과대학 1호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,23,abbreviation,known,자1에서 공4 가줘,자연과학대학 1호관,공과대학 4호관,,공과대학 4호관,false,true,false,true,SUCCESS
+1,24,abbreviation,known,인문대에서 경상대 가는 길,인문대학,경상대학,,경상대학,false,true,false,true,SUCCESS
+1,25,abbreviation,known,법대에서 약대 가줘,법학전문대학원,약학대학,,약학대학,false,true,false,true,SUCCESS
+1,26,abbreviation,known,농1에서 생활대 가줘,농업생명과학대학 1호관,생활과학대학,,생활과학대학,false,true,false,true,SUCCESS
+1,27,abbreviation,known,공2에서 도서관 가줘,공과대학 2호관,중앙도서관,,중앙도서관,false,true,false,true,SUCCESS
+1,28,abbreviation,known,자2에서 공1 가는 길,자연과학대학 2호관,공과대학 1호관,,공과대학 1호관,false,true,false,true,SUCCESS
+1,29,abbreviation,known,정문에서 공4 가줘,정문,공과대학 4호관,정문,공과대학 4호관,true,true,true,false,SUCCESS
+1,30,abbreviation,known,서문에서 자1 가줘,서문,자연과학대학 1호관,서문,자연과학대학 1호관,true,true,true,false,SUCCESS
+1,31,abbreviation,known,공5에서 1학 가줘,공과대학 5호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,32,abbreviation,known,생명대에서 자3 가줘,생명시스템과학대학,자연과학대학 3호관,,자연과학대학 3호관,false,true,false,true,SUCCESS
+1,33,abbreviation,known,1학에서 공3 가는 길,제1학생회관,공과대학 3호관,제1학생회관 앞,공과대학 3호관,true,true,true,false,SUCCESS
+1,34,abbreviation,known,경상대에서 로스쿨 가줘,경상대학,법학전문대학원,,법학전문대학원,false,true,false,true,SUCCESS
+1,35,abbreviation,known,전산에서 미술관 가줘,정보화본부,예술대학 미술관,,예술대학 미술관,false,true,false,true,SUCCESS
+1,36,abbreviation,known,한누리에서 사강 가는 길,한누리회관,사회과학대학 강의동,,사회과학대학 강의동,false,true,false,true,SUCCESS
+1,37,abbreviation,known,도서관에서 공4 가줘,중앙도서관,공과대학 4호관,중앙도서관 앞,공과대학 4호관,true,true,true,false,SUCCESS
+1,38,abbreviation,known,자4에서 2학 가줘,자연과학대학 4호관,제2학생회관,,제2학생회관,false,true,false,true,SUCCESS
+1,39,abbreviation,known,공4에서 디자인관 가는 길,공과대학 4호관,예술대학 디자인관,,예술대학 디자인관,false,true,false,true,SUCCESS
+1,40,abbreviation,known,생활대에서 본부 가줘,생활과학대학,대학본부,,국제교류본부·국제언어교육센터,false,false,false,true,SUCCESS
+1,41,variant,variant,공대4호관에서 1학 가줘,공과대학 4호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,42,variant,variant,공과대4호관에서 자1,공과대학 4호관,자연과학대학 1호관,,자연과학대학 1호관,false,true,false,true,SUCCESS
+1,43,variant,variant,공대 4호관에서 인문관 가는 길,공과대학 4호관,인문대학,,인문대학,false,true,false,true,SUCCESS
+1,44,variant,variant,공대1호관에서 도서관 가줘,공과대학 1호관,중앙도서관,,중앙도서관,false,true,false,true,SUCCESS
+1,45,variant,variant,자연과학대 1호관에서 공대4호관 가줘,자연과학대학 1호관,공과대학 4호관,,공과대학 4호관,false,true,false,true,SUCCESS
+1,46,variant,variant,자연과학대학2호관에서 경상관 가는 길,자연과학대학 2호관,경상대학,,경상대학,false,true,false,true,SUCCESS
+1,47,variant,variant,정문에서 공과대4호관 가줘,정문,공과대학 4호관,정문,,true,false,false,false,SUCCESS
+1,48,variant,variant,인문 대학에서 경상 대학 가줘,인문대학,경상대학,,글로벌인재양성센터,false,false,false,true,SUCCESS
+1,49,variant,variant,서문에서 자연과학대 1호관 가는 길,서문,자연과학대학 1호관,서문,자연과학대학 1호관,true,true,true,false,SUCCESS
+1,50,variant,variant,공대4호관에서 약대 가줘,공과대학 4호관,약학대학,,약학대학,false,true,false,true,SUCCESS
+1,51,variant,variant,인문관에서 경상관 가는 길,인문대학,경상대학,,경상대학,false,true,false,true,SUCCESS
+1,52,variant,variant,공대1호관에서 공대 4호관 가줘,공과대학 1호관,공과대학 4호관,,공과대학 4호관,false,true,false,true,SUCCESS
+1,53,variant,variant,자연과학대학2호관에서 도서관 가줘,자연과학대학 2호관,중앙도서관,,중앙도서관,false,true,false,true,SUCCESS
+1,54,variant,variant,공대 4호관에서 1학 가는 길,공과대학 4호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,55,variant,variant,북문에서 자연과학대 1호관 가줘,북문,자연과학대학 1호관,북문(자운대방면),자연과학대학 1호관,true,true,true,false,SUCCESS
+1,56,variant,variant,경상 대학에서 약대 가줘,경상대학,약학대학,,약학대학,false,true,false,true,SUCCESS
+1,57,variant,variant,공과대4호관에서 도서관 가는 길,공과대학 4호관,중앙도서관,,중앙도서관,false,true,false,true,SUCCESS
+1,58,variant,variant,인문 대학에서 공대1호관 가줘,인문대학,공과대학 1호관,,공과대학 1호관,false,true,false,true,SUCCESS
+1,59,variant,unseen,농생대 1호관에서 1학 가줘,농업생명과학대학 1호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,60,variant,variant,자연과학대 1호관에서 경상관 가는 길,자연과학대학 1호관,경상대학,,경상대학,false,true,false,true,SUCCESS
+1,61,natural,known,지금 공4인데 자1까지 어떻게 가?,공과대학 4호관,자연과학대학 1호관,,,false,false,false,false,SUCCESS
+1,62,natural,known,나 자1인데 도서관 가고 싶어,자연과학대학 1호관,중앙도서관,,중앙도서관,false,true,false,true,SUCCESS
+1,63,natural,known,공4에서 출발해서 밥 먹으러 1학 가자,공과대학 4호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,64,natural,known,자1에서 공1 좀 데려다줘,자연과학대학 1호관,공과대학 1호관,,공과대학 1호관,false,true,false,true,SUCCESS
+1,65,natural,known,인문대에 있는데 경상대 가려면 어디로 가?,인문대학,경상대학,,경상대학,false,true,false,true,SUCCESS
+1,66,natural,known,지금 정문인데 공4 가고 싶어,정문,공과대학 4호관,,공과대학 4호관,false,true,false,true,SUCCESS
+1,67,natural,known,나 지금 법대인데 약대까지 가는 길 알려줘,법학전문대학원,약학대학,,,false,false,false,false,SUCCESS
+1,68,natural,known,1학에서 수업 끝나고 공4 가야 해,제1학생회관,공과대학 4호관,제1학생회관 앞,공과대학 4호관,true,true,true,false,SUCCESS
+1,69,natural,known,공1에 있어 근데 도서관 가는 길이 궁금해,공과대학 1호관,중앙도서관,,중앙도서관,false,true,false,true,SUCCESS
+1,70,natural,known,서문 쪽에서 자1까지 걸어가려는데 알려줘,서문,자연과학대학 1호관,서문,,true,false,false,false,SUCCESS
+1,71,natural,known,공4인데 생활대 가고 싶어,공과대학 4호관,생활과학대학,,생활과학대학,false,true,false,true,SUCCESS
+1,72,natural,known,생명대에서 자3까지 좀 데려다줄래?,생명시스템과학대학,자연과학대학 3호관,,,false,false,false,false,SUCCESS
+1,73,natural,known,나 공2에 있는데 1학 어떻게 가,공과대학 2호관,제1학생회관,,제1학생회관,false,true,false,true,SUCCESS
+1,74,natural,known,지금 농1인데 생명대 가는 법 알려줘,농업생명과학대학 1호관,생명시스템과학대학,,생명시스템과학대학,false,true,false,true,SUCCESS
+1,75,natural,known,경상대에서 출발할게 법대 가자,경상대학,법학전문대학원,,법학전문대학원,false,true,false,true,SUCCESS
+1,76,natural,known,자4에 있는데 공5까지 가야돼,자연과학대학 4호관,공과대학 5호관,,,false,false,false,false,SUCCESS
+1,77,natural,known,도서관 앞인데 공4 가는 길 좀,중앙도서관,공과대학 4호관,,공과대학 4호관,false,true,false,true,SUCCESS
+1,78,natural,known,1학 있다가 전산 갈건데 길 알려줘,제1학생회관,정보화본부,,제1학생회관,false,false,false,true,SUCCESS
+1,79,natural,known,공4에서 미술관 구경하러 가고 싶어,공과대학 4호관,예술대학 미술관,,예술대학 미술관,false,true,false,true,SUCCESS
+1,80,natural,known,나 인문대인데 한누리에서 밥 먹자,인문대학,한누리회관,,,false,false,false,false,SUCCESS

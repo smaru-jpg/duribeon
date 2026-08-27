@@ -1,0 +1,642 @@
+[
+  {
+    "id": 1,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "정문에서 인문대학 가는 길 알려줘",
+    "expected_origin": "정문",
+    "expected_destination": "인문대학"
+  },
+  {
+    "id": 2,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "서문에서 자연과학대학 1호관 가줘",
+    "expected_origin": "서문",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 3,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "쪽문에서 공과대학 4호관 가는 길",
+    "expected_origin": "쪽문",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 4,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "북문에서 수의과대학 가줘",
+    "expected_origin": "북문",
+    "expected_destination": "수의과대학"
+  },
+  {
+    "id": 5,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "중앙도서관 앞에서 경상대학 가는 길 알려줘",
+    "expected_origin": "중앙도서관",
+    "expected_destination": "경상대학"
+  },
+  {
+    "id": 6,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "정문에서 법학전문대학원 가줘",
+    "expected_origin": "정문",
+    "expected_destination": "법학전문대학원"
+  },
+  {
+    "id": 7,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "공과대학 1호관에서 제1학생회관 가줘",
+    "expected_origin": "공과대학 1호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 8,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "인문대학에서 경상대학 가는 길",
+    "expected_origin": "인문대학",
+    "expected_destination": "경상대학"
+  },
+  {
+    "id": 9,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "자연과학대학 1호관에서 중앙도서관 가줘",
+    "expected_origin": "자연과학대학 1호관",
+    "expected_destination": "중앙도서관"
+  },
+  {
+    "id": 10,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "공과대학 4호관에서 제1학생회관 가는 길 알려줘",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 11,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "약학대학에서 생활과학대학 가줘",
+    "expected_origin": "약학대학",
+    "expected_destination": "생활과학대학"
+  },
+  {
+    "id": 12,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "생명시스템과학대학에서 자연과학대학 1호관 가는 길",
+    "expected_origin": "생명시스템과학대학",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 13,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "서문에서 농업생명과학대학 1호관 가줘",
+    "expected_origin": "서문",
+    "expected_destination": "농업생명과학대학 1호관"
+  },
+  {
+    "id": 14,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "공과대학 4호관에서 중앙도서관 가줘",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "중앙도서관"
+  },
+  {
+    "id": 15,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "정문에서 공과대학 1호관 가는 길 알려줘",
+    "expected_origin": "정문",
+    "expected_destination": "공과대학 1호관"
+  },
+  {
+    "id": 16,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "제1학생회관에서 인문대학 가줘",
+    "expected_origin": "제1학생회관",
+    "expected_destination": "인문대학"
+  },
+  {
+    "id": 17,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "경상대학에서 약학대학 가는 길",
+    "expected_origin": "경상대학",
+    "expected_destination": "약학대학"
+  },
+  {
+    "id": 18,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "북문에서 생명시스템과학대학 가줘",
+    "expected_origin": "북문",
+    "expected_destination": "생명시스템과학대학"
+  },
+  {
+    "id": 19,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "자연과학대학 1호관에서 공과대학 4호관 가는 길 알려줘",
+    "expected_origin": "자연과학대학 1호관",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 20,
+    "category": "formal",
+    "alias_type": "formal",
+    "input": "중앙도서관 앞에서 제1학생회관 가줘",
+    "expected_origin": "중앙도서관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 21,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "공4에서 자1 가줘",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 22,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "공1에서 1학 가자",
+    "expected_origin": "공과대학 1호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 23,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "자1에서 공4 가줘",
+    "expected_origin": "자연과학대학 1호관",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 24,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "인문대에서 경상대 가는 길",
+    "expected_origin": "인문대학",
+    "expected_destination": "경상대학"
+  },
+  {
+    "id": 25,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "법대에서 약대 가줘",
+    "expected_origin": "법학전문대학원",
+    "expected_destination": "약학대학"
+  },
+  {
+    "id": 26,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "농1에서 생활대 가줘",
+    "expected_origin": "농업생명과학대학 1호관",
+    "expected_destination": "생활과학대학"
+  },
+  {
+    "id": 27,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "공2에서 도서관 가줘",
+    "expected_origin": "공과대학 2호관",
+    "expected_destination": "중앙도서관"
+  },
+  {
+    "id": 28,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "자2에서 공1 가는 길",
+    "expected_origin": "자연과학대학 2호관",
+    "expected_destination": "공과대학 1호관"
+  },
+  {
+    "id": 29,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "정문에서 공4 가줘",
+    "expected_origin": "정문",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 30,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "서문에서 자1 가줘",
+    "expected_origin": "서문",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 31,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "공5에서 1학 가줘",
+    "expected_origin": "공과대학 5호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 32,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "생명대에서 자3 가줘",
+    "expected_origin": "생명시스템과학대학",
+    "expected_destination": "자연과학대학 3호관"
+  },
+  {
+    "id": 33,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "1학에서 공3 가는 길",
+    "expected_origin": "제1학생회관",
+    "expected_destination": "공과대학 3호관"
+  },
+  {
+    "id": 34,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "경상대에서 로스쿨 가줘",
+    "expected_origin": "경상대학",
+    "expected_destination": "법학전문대학원"
+  },
+  {
+    "id": 35,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "전산에서 미술관 가줘",
+    "expected_origin": "정보화본부",
+    "expected_destination": "예술대학 미술관"
+  },
+  {
+    "id": 36,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "한누리에서 사강 가는 길",
+    "expected_origin": "한누리회관",
+    "expected_destination": "사회과학대학 강의동"
+  },
+  {
+    "id": 37,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "도서관에서 공4 가줘",
+    "expected_origin": "중앙도서관",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 38,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "자4에서 2학 가줘",
+    "expected_origin": "자연과학대학 4호관",
+    "expected_destination": "제2학생회관"
+  },
+  {
+    "id": 39,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "공4에서 디자인관 가는 길",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "예술대학 디자인관"
+  },
+  {
+    "id": 40,
+    "category": "abbreviation",
+    "alias_type": "known",
+    "input": "생활대에서 본부 가줘",
+    "expected_origin": "생활과학대학",
+    "expected_destination": "대학본부"
+  },
+  {
+    "id": 41,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "공대4호관에서 1학 가줘",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 42,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "공과대4호관에서 자1",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 43,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "공대 4호관에서 인문관 가는 길",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "인문대학"
+  },
+  {
+    "id": 44,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "공대1호관에서 도서관 가줘",
+    "expected_origin": "공과대학 1호관",
+    "expected_destination": "중앙도서관"
+  },
+  {
+    "id": 45,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "자연과학대 1호관에서 공대4호관 가줘",
+    "expected_origin": "자연과학대학 1호관",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 46,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "자연과학대학2호관에서 경상관 가는 길",
+    "expected_origin": "자연과학대학 2호관",
+    "expected_destination": "경상대학"
+  },
+  {
+    "id": 47,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "정문에서 공과대4호관 가줘",
+    "expected_origin": "정문",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 48,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "인문 대학에서 경상 대학 가줘",
+    "expected_origin": "인문대학",
+    "expected_destination": "경상대학"
+  },
+  {
+    "id": 49,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "서문에서 자연과학대 1호관 가는 길",
+    "expected_origin": "서문",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 50,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "공대4호관에서 약대 가줘",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "약학대학"
+  },
+  {
+    "id": 51,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "인문관에서 경상관 가는 길",
+    "expected_origin": "인문대학",
+    "expected_destination": "경상대학"
+  },
+  {
+    "id": 52,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "공대1호관에서 공대 4호관 가줘",
+    "expected_origin": "공과대학 1호관",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 53,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "자연과학대학2호관에서 도서관 가줘",
+    "expected_origin": "자연과학대학 2호관",
+    "expected_destination": "중앙도서관"
+  },
+  {
+    "id": 54,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "공대 4호관에서 1학 가는 길",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 55,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "북문에서 자연과학대 1호관 가줘",
+    "expected_origin": "북문",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 56,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "경상 대학에서 약대 가줘",
+    "expected_origin": "경상대학",
+    "expected_destination": "약학대학"
+  },
+  {
+    "id": 57,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "공과대4호관에서 도서관 가는 길",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "중앙도서관"
+  },
+  {
+    "id": 58,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "인문 대학에서 공대1호관 가줘",
+    "expected_origin": "인문대학",
+    "expected_destination": "공과대학 1호관"
+  },
+  {
+    "id": 59,
+    "category": "variant",
+    "alias_type": "unseen",
+    "input": "농생대 1호관에서 1학 가줘",
+    "expected_origin": "농업생명과학대학 1호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 60,
+    "category": "variant",
+    "alias_type": "variant",
+    "input": "자연과학대 1호관에서 경상관 가는 길",
+    "expected_origin": "자연과학대학 1호관",
+    "expected_destination": "경상대학"
+  },
+  {
+    "id": 61,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "지금 공4인데 자1까지 어떻게 가?",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 62,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "나 자1인데 도서관 가고 싶어",
+    "expected_origin": "자연과학대학 1호관",
+    "expected_destination": "중앙도서관"
+  },
+  {
+    "id": 63,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "공4에서 출발해서 밥 먹으러 1학 가자",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 64,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "자1에서 공1 좀 데려다줘",
+    "expected_origin": "자연과학대학 1호관",
+    "expected_destination": "공과대학 1호관"
+  },
+  {
+    "id": 65,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "인문대에 있는데 경상대 가려면 어디로 가?",
+    "expected_origin": "인문대학",
+    "expected_destination": "경상대학"
+  },
+  {
+    "id": 66,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "지금 정문인데 공4 가고 싶어",
+    "expected_origin": "정문",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 67,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "나 지금 법대인데 약대까지 가는 길 알려줘",
+    "expected_origin": "법학전문대학원",
+    "expected_destination": "약학대학"
+  },
+  {
+    "id": 68,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "1학에서 수업 끝나고 공4 가야 해",
+    "expected_origin": "제1학생회관",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 69,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "공1에 있어 근데 도서관 가는 길이 궁금해",
+    "expected_origin": "공과대학 1호관",
+    "expected_destination": "중앙도서관"
+  },
+  {
+    "id": 70,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "서문 쪽에서 자1까지 걸어가려는데 알려줘",
+    "expected_origin": "서문",
+    "expected_destination": "자연과학대학 1호관"
+  },
+  {
+    "id": 71,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "공4인데 생활대 가고 싶어",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "생활과학대학"
+  },
+  {
+    "id": 72,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "생명대에서 자3까지 좀 데려다줄래?",
+    "expected_origin": "생명시스템과학대학",
+    "expected_destination": "자연과학대학 3호관"
+  },
+  {
+    "id": 73,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "나 공2에 있는데 1학 어떻게 가",
+    "expected_origin": "공과대학 2호관",
+    "expected_destination": "제1학생회관"
+  },
+  {
+    "id": 74,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "지금 농1인데 생명대 가는 법 알려줘",
+    "expected_origin": "농업생명과학대학 1호관",
+    "expected_destination": "생명시스템과학대학"
+  },
+  {
+    "id": 75,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "경상대에서 출발할게 법대 가자",
+    "expected_origin": "경상대학",
+    "expected_destination": "법학전문대학원"
+  },
+  {
+    "id": 76,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "자4에 있는데 공5까지 가야돼",
+    "expected_origin": "자연과학대학 4호관",
+    "expected_destination": "공과대학 5호관"
+  },
+  {
+    "id": 77,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "도서관 앞인데 공4 가는 길 좀",
+    "expected_origin": "중앙도서관",
+    "expected_destination": "공과대학 4호관"
+  },
+  {
+    "id": 78,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "1학 있다가 전산 갈건데 길 알려줘",
+    "expected_origin": "제1학생회관",
+    "expected_destination": "정보화본부"
+  },
+  {
+    "id": 79,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "공4에서 미술관 구경하러 가고 싶어",
+    "expected_origin": "공과대학 4호관",
+    "expected_destination": "예술대학 미술관"
+  },
+  {
+    "id": 80,
+    "category": "natural",
+    "alias_type": "known",
+    "input": "나 인문대인데 한누리에서 밥 먹자",
+    "expected_origin": "인문대학",
+    "expected_destination": "한누리회관"
+  }
+]

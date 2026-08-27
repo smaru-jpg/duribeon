@@ -1,0 +1,9 @@
+Metric,Legacy,LLM,Difference_pp
+Origin Accuracy (%),25,,
+Destination Accuracy (%),87.5,,
+Pair Accuracy (%),22.5,,
+Unnecessary Clarification Rate (%),68.8,,
+Pair Accuracy · formal (%),55,,
+Pair Accuracy · abbreviation (%),20,,
+Pair Accuracy · variant (%),10,,
+Pair Accuracy · natural (%),5,,

@@ -1110,7 +1110,8 @@ function makePlaceSummary(origin, building, room) {
 }
 
 // ════════════════ 메인 ─═══════════════
-export default function CNUNavigator() {
+// (구버전 채팅 UI는 아래에 CNUChatbot 으로 보존해 둡니다. 필요하면 이걸 export default 로 바꾸면 채팅 버전으로 복귀합니다.)
+function CNUChatbot() {
   const [messages, setMessages] = useState([
     {
       role: "bot",
@@ -1300,6 +1301,17 @@ export default function CNUNavigator() {
     runRoute(o, b, tip, match.room);
   };
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from");
+    const to = params.get("to");
+
+    if (!from || !to) return;
+
+    handle(`${from}에서 ${to} 가는 길 알려줘`);
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }, []);
+
   const onChoice = (item, kind) => {
     if (kind === "origin") {
       pushUser(`현재 위치: ${item.label}`);
@@ -1409,6 +1421,68 @@ export default function CNUNavigator() {
           ➤
         </button>
       </div>
+    </div>
+  );
+}
+
+// ════════════════ 지도 전용 메인 (채팅 UI 없음) ─═══════════════
+// 화면에는 [지도] + [위치 정보 카드]만 표시합니다.
+// 출발지/목적지는 URL 파라미터로 지정할 수 있어요:
+//   예) ?from=정문&to=인문대   /   ?from=중앙도서관&to=공대4호관
+// 파라미터가 없으면 아래 기본값(정문 → 제1학생회관)으로 표시됩니다.
+export default function CNUNavigator() {
+  const params = new URLSearchParams(window.location.search);
+  const fromParam = params.get("from") || "정문";
+  const toParam = params.get("to") || "제1학생회관";
+
+  const origin = findOriginInText(fromParam);
+  const match = bestMatch(toParam);
+  const building = match ? match.building : null;
+  const room = match ? match.room : "";
+  const buildingForMap = building ? { ...building, matchedRoom: room || "" } : null;
+
+  return (
+    <div className="cnu-app" style={S.mapOnlyWrap}>
+      <style>{`
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
+.pop{animation:pp .34s cubic-bezier(.18,.89,.32,1.28)}
+@keyframes pp{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+@media (max-width:768px){
+  .cnu-app{min-height:100dvh!important;max-width:none!important;border-radius:0!important}
+  .cnu-map-frame,.cnu-map-frame>div,.cnu-map-frame>div>div{height:320px!important}
+  .cnu-map-notice{height:320px!important}
+}
+`}</style>
+
+      {building ? (
+        <>
+          <div className="pop cnu-map-bubble" style={S.mapCard}>
+            <div style={S.lbl}>🗺️ Kakao Map — 위치 확인</div>
+            <div
+              className="cnu-map-frame"
+              style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e3ddd0" }}
+            >
+              <KakaoSearchMap origin={origin} building={buildingForMap} />
+            </div>
+          </div>
+
+          <div className="pop" style={S.infoCard}>
+            <div style={S.lbl}>📌 위치 정보</div>
+            {makePlaceSummary(origin || { label: fromParam }, building, room).map((s, i) => (
+              <div key={i} style={S.step} dangerouslySetInnerHTML={{ __html: md(s) }} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="pop" style={S.infoCard}>
+          <div style={S.lbl}>📌 위치 정보</div>
+          <div style={S.step}>
+            "<b>{toParam}</b>" 목적지를 찾지 못했어요.
+            <br />
+            주소창에 <b>?from=정문&amp;to=인문대</b> 형태로 지정해주세요.
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -1642,6 +1716,34 @@ const S = {
     borderRadius: 12,
     lineHeight: 1.6,
     fontSize: 13.5,
+  },
+  mapOnlyWrap: {
+    fontFamily: "'Gowun Dodum',sans-serif",
+    width: "100%",
+    maxWidth: 460,
+    margin: "0 auto",
+    minHeight: "100dvh",
+    display: "flex",
+    flexDirection: "column",
+    gap: 12,
+    padding: 14,
+    boxSizing: "border-box",
+    background:
+      "radial-gradient(circle at 15% 8%,#eef5ff 0%,transparent 38%),radial-gradient(circle at 88% 85%,#eef7ef 0%,transparent 42%),#fffdf8",
+  },
+  mapCard: {
+    background: "#fff",
+    border: "1px solid #ece4d4",
+    padding: 10,
+    borderRadius: 16,
+    boxShadow: "0 2px 10px rgba(70,60,30,.06)",
+  },
+  infoCard: {
+    background: "#fff",
+    border: "1px solid #ece4d4",
+    padding: "12px 14px",
+    borderRadius: 16,
+    boxShadow: "0 2px 10px rgba(70,60,30,.06)",
   },
   mapWarn: {
     marginBottom: 8,

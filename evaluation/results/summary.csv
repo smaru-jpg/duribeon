@@ -1,0 +1,13 @@
+Metric,Legacy,LLM,Difference_pp
+Origin Accuracy (%),25,100,75
+Destination Accuracy (%),87.5,100,12.5
+Pair Accuracy (%),22.5,100,77.5
+Unnecessary Clarification Rate (%),68.8,0,-68.8
+Pair Accuracy · formal (%),55,100,45
+Pair Accuracy · abbreviation (%),20,100,80
+Pair Accuracy · variant (%),10,0,-10
+Pair Accuracy · natural (%),5,0,-5
+Gemini Response avg (ms),,4459,
+Gemini Response median (ms),,2909,
+Gemini Response p95 (ms),,10395,
+Gemini Response min/max (ms),,1751/13051,
